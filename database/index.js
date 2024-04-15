@@ -1,12 +1,12 @@
-import { createPool, Pool } from 'mysql2/promise';
-import { PoolOptions } from 'mysql2';
+import { createPool } from 'mysql2/promise';
+
 
 /**
  * Connection pool set up
  */
-const poolConnectionOptions: PoolOptions = {
+const poolConnectionOptions = {
     host: process.env.REMOTE_DB_HOST,
-    port: process.env.REMOTE_DB_PORT as unknown as number,
+    port: process.env.REMOTE_DB_PORT,
     user: process.env.REMOTE_DB_USER,
     database: process.env.REMOTE_DB_DATABASE,
     password: process.env.REMOTE_DB_PASSWORD,
@@ -20,7 +20,7 @@ const poolConnectionOptions: PoolOptions = {
 /**
  * Create database connection pool
  */
-let pool: Pool;
+let pool;
 
 try {
     pool = createPool(poolConnectionOptions);
